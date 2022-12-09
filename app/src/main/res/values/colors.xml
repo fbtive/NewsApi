@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#00e5ff</color>
+    <color name="primaryLightColor">#6effff</color>
+    <color name="primaryDarkColor">#00b2cc</color>
+    <color name="secondaryColor">#ffd600</color>
+    <color name="secondaryLightColor">#ffff52</color>
+    <color name="secondaryDarkColor">#c7a500</color>
+    <color name="primaryTextColor">#303030</color>
+    <color name="secondaryTextColor">#fafafa</color>
+
+    <color name="grey_shimmer">@color/material_grey_800</color>
+    <color name="shimmer_highlight">#FFEEEEEE</color>
+</resources>
