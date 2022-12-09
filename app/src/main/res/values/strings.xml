@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">GoodNews</string>
+    <string name="app_name">NewsApi</string>
+
+    <string name="menu_home">Headlines</string>
+    <string name="menu_sources">Sources</string>
+    <string name="menu_bookmark">Bookmark</string>
 </resources>

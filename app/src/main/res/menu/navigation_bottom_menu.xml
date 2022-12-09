@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/ic_newspaper"
+        android:title="@string/menu_home"/>
+    <item
+        android:id="@+id/headline"
+        android:enabled="true"
+        android:icon="@drawable/ic_source"
+        android:title="@string/menu_sources"/>
+    <item
+        android:id="@+id/bookmark"
+        android:enabled="true"
+        android:icon="@drawable/ic_bookmark"
+        android:title="@string/menu_bookmark"/>
+</menu>
