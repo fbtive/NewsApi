@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/headline_fragment_dst">
+
+    <fragment
+        android:id="@+id/headline_fragment_dst"
+        android:name="com.example.technews.newsheadlines.HeadlineFragment"
+        android:label="fragment_headlines"
+        tools:layout="@layout/fragment_headlines" >
+        <action
+            android:id="@+id/action_headline_fragment_dst_to_articleFragment"
+            app:destination="@id/articleFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:popExitAnim="@anim/slide_out_bottom" />
+    </fragment>
+    <fragment
+        android:id="@+id/sources_fragment_dst"
+        android:name="com.example.technews.newssources.SourcesFragment"
+        android:label="fragment_sources"
+        tools:layout="@layout/fragment_sources" />
+    <fragment
+        android:id="@+id/bookmark_fragment_dst"
+        android:name="com.example.technews.newsbookmark.BookmarkFragment"
+        android:label="fragment_bookmark"
+        tools:layout="@layout/fragment_bookmark" />
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.example.technews.newsarticle.ArticleFragment"
+        android:label="fragment_article"
+        tools:layout="@layout/fragment_article" />
+</navigation>

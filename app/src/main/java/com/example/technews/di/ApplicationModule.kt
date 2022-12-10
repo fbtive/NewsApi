@@ -1,4 +1,4 @@
-package com.example.technews.modules
+package com.example.technews.di
 
 import com.example.technews.data.remote.API.NewsApi
 import com.squareup.moshi.Moshi

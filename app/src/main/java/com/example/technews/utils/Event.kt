@@ -1,4 +1,4 @@
-package com.example.technews.Utils
+package com.example.technews.utils
 
 import androidx.lifecycle.Observer
 
