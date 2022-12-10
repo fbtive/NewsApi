@@ -25,6 +25,10 @@ class HeadlineFragment : Fragment() {
             findNavController().navigate(HeadlineFragmentDirections.actionHeadlineFragmentDstToArticleFragment())
         }
 
+        val activity = (requireActivity() as MainActivity)
+        activity.recalculateToolbarAndRootView(binding.root, binding.appBarLayout)
+        activity.setupAppBarScrollBehavior(binding.appBarLayout, binding.mainToolbar, binding.searchText, binding.nestedScrollView)
+
         return binding.root
     }
 }
