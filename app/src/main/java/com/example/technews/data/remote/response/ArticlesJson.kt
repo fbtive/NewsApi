@@ -9,12 +9,12 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class ArticlesJson (
     val source: ArticleSourceJson,
-    val author: String,
+    val author: String?,
     val title: String,
-    val description: String,
+    val description: String?,
     val url: String,
-    val urlToImage: String,
+    val urlToImage: String?,
     @Json(name = "publishedAt")
     val date: String,
-    val content: String
+    val content: String?
 ): Parcelable

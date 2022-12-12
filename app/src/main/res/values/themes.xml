@@ -19,4 +19,16 @@
 
 <!--        <item name="snackbarStyle">@style/Widget.MaterialComponents.Snackbar.FullWidth</item>-->
     </style>
+    
+    <style name="TextAppearance.GoodNews.TitleNews" parent="">
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle1</item>
+        <item name="android:textColor">?colorOnPrimary</item>
+    </style>
+    <style name="TextAppearance.GoodNews.DescriptionNews" parent="">
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle2</item>
+        <item name="android:textColor">?colorOnPrimary</item>
+    </style>
 </resources>

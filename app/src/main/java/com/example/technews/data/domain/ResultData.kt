@@ -1,9 +1,11 @@
 package com.example.technews.data.domain
 
-sealed class Result<out R>() {
-    data class Success<out T>(val data: T): Result<T>()
-    data class Error(val exception: Exception): Result<Nothing>()
-    object Loading: Result<Nothing>()
+import com.example.technews.data.remote.response.NewsData
+
+sealed class ResultData<out R>() {
+    data class Success<out T>(val data: T): ResultData<T>()
+    data class Error<T>(val exception: Exception): ResultData<T>()
+    class Loading<T>: ResultData<T>()
 
     override fun toString(): String {
         return when(this) {

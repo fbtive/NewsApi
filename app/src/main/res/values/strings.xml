@@ -7,6 +7,11 @@
     <string name="menu_settings">Settings</string>
 
     <string name="search_text">Search</string>
+
+    <string name="network_error">Something went wrong..</string>
+    <string name="network_no_internet">Please check your internet connection..</string>
+
+    <string name="headlines">News Headline</string>
     <string name="lorem_ipsum"><![CDATA[
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque eu. Condimentum id venenatis a condimentum vitae sapien pellentesque habitant. Felis eget velit aliquet sagittis id consectetur purus ut faucibus. Lorem sed risus ultricies tristique nulla aliquet enim. Sed viverra ipsum nunc aliquet bibendum enim facilisis gravida neque. Adipiscing enim eu turpis egestas pretium aenean pharetra. Rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. At lectus urna duis convallis convallis tellus id interdum velit. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Nascetur ridiculus mus mauris vitae ultricies leo. Risus nullam eget felis eget nunc. Ultrices mi tempus imperdiet nulla malesuada pellentesque elit eget gravida. Amet mauris commodo quis imperdiet massa tincidunt.</p>
         <p>Ultrices mi tempus imperdiet nulla malesuada pellentesque. Sem et tortor consequat id porta nibh venenatis. Purus in mollis nunc sed id semper risus in. Urna neque viverra justo nec ultrices dui sapien eget. Cursus sit amet dictum sit amet justo donec enim. Tellus at urna condimentum mattis pellentesque id nibh. Tempus egestas sed sed risus pretium quam. Volutpat diam ut venenatis tellus in metus vulputate eu. Sit amet est placerat in. Id diam maecenas ultricies mi eget mauris pharetra et ultrices. Enim nunc faucibus a pellentesque sit. Egestas tellus rutrum tellus pellentesque. Proin sagittis nisl rhoncus mattis rhoncus urna neque viverra justo.</p>

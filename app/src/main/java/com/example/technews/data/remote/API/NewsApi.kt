@@ -14,7 +14,7 @@ interface NewsApi {
         const val API_KEY = BuildConfig.api_key
     }
 
-    @Headers("X-Api-Key", API_KEY)
+    @Headers("X-Api-Key: $API_KEY")
     @GET("top-headlines")
     suspend fun getHeadlines(
         @Query("category") category: String,
