@@ -25,9 +25,9 @@ class HeadlinesViewModel @Inject constructor(
     val headlineList: LiveData<List<Article>>
         get() = _headlineList
 
-    private val _headlineShimmer = MutableLiveData<Boolean>(true)
-    val headlineShimmer: LiveData<Boolean>
-        get() = _headlineShimmer
+    private val _shimmer = MutableLiveData<Boolean>(true)
+    val shimmer: LiveData<Boolean>
+        get() = _shimmer
 
     init {
         refreshHeadlines()
@@ -40,10 +40,15 @@ class HeadlinesViewModel @Inject constructor(
             val result = repository.getHeadline()
             if (result is ResultData.Success) {
                 _headlineList.value = result.data.asDomainModel()
+                _shimmer.value = false
             }
             if (result is ResultData.Error) {
                 Log.d("ViewModel", result.exception.message!!)
             }
         }
+    }
+
+    fun saveArticleToDB(article: Article) {
+
     }
 }

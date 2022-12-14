@@ -3,6 +3,7 @@ package com.example.technews.newsheadlines
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -16,7 +17,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class HeadlinesAdapter(
-
+    val clickListener: (url: String) -> Unit,
+    val saveLocalListener: (article: Article) -> Unit,
+    val callBrowserListener: (url: String) -> Unit
 ): ListAdapter<HeadlineItem, RecyclerView.ViewHolder>(HeadlinesDiffCallback()) {
 
     private val adapterScope = CoroutineScope(Dispatchers.Default)
@@ -54,7 +57,7 @@ class HeadlinesAdapter(
             is ArticlesViewHolder -> {
 
                 val item = getItem(position) as HeadlineItem.HeadlineArticle
-                holder.bind(item.article)
+                holder.bind(item.article, clickListener, saveLocalListener, callBrowserListener)
             }
         }
     }
@@ -71,8 +74,17 @@ class HeadlinesAdapter(
             }
         }
 
-        fun bind(item: Article) {
+        fun bind(
+            item: Article,
+            clickListener: (url: String) -> Unit,
+            saveLocalListener: (article: Article) -> Unit,
+            callBrowserListener: (url: String) -> Unit
+        ) {
             binding.article = item
+            binding.articleThumbnail.setOnClickListener { clickListener(item.url) }
+            binding.articleTitle.setOnClickListener { clickListener(item.url) }
+            binding.btnBookmark.setOnClickListener { saveLocalListener(item) }
+            binding.btnBrowser.setOnClickListener { callBrowserListener(item.url) }
             binding.executePendingBindings()
         }
 
@@ -96,6 +108,7 @@ class HeadlinesAdapter(
             return oldItem.url == newItem.url
         }
     }
+
 }
 
 sealed class HeadlineItem {

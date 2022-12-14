@@ -13,7 +13,8 @@ data class Article(
     val url: String,
     val imageUrl: String?,
     val date: String,
-    val content: String?
+    val content: String?,
+    val saved: Boolean = false
 ): Parcelable {
 
     val shortDescription: String?

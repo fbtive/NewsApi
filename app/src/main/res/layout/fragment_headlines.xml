@@ -25,5 +25,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/list_item_articles" />
 
+        <include layout="@layout/shimmer_list_article" android:id="@+id/shimmer_layout" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

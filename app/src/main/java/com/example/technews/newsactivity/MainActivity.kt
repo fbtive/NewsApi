@@ -1,21 +1,8 @@
-package com.example.technews.NewsActivity
+package com.example.technews.newsactivity
 
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.util.TypedValue
 import android.view.View
-import android.view.ViewGroup
-import android.view.ViewTreeObserver
-import android.widget.ScrollView
-import android.widget.TextView
-import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updateLayoutParams
-import androidx.core.widget.NestedScrollView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -23,14 +10,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.RecyclerView
 import com.example.technews.R
 import com.example.technews.databinding.ActivityMainBinding
-import com.example.technews.newsheadlines.HeadlineFragmentDirections
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.shape.CornerFamily
-import com.google.android.material.shape.MaterialShapeDrawable
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -67,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         binding.mainToolbar.setOnMenuItemClickListener { menu ->
             when(menu.itemId) {
                 R.id.menu_settings -> {
-                    navController.navigate(R.id.articleFragment)
+                    navController.navigate(R.id.settingsFragment)
                     true
                 }
                 else -> false
@@ -89,7 +70,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.bookmark_fragment_dst -> {
                     binding.bottomNavigation.visibility = View.VISIBLE
                 }
-                R.id.articleFragment -> {
+                R.id.settingsFragment -> {
                     binding.bottomNavigation.visibility = View.GONE
                 }
             }

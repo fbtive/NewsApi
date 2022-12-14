@@ -50,7 +50,6 @@ class HeadlinesRepository constructor(
             } catch (e: Exception) {
                 ResultData.Error(Exception(context.getString(R.string.network_error)))
             }
-
         }
     }
 

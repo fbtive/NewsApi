@@ -10,7 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.technews.R
 
 
-@BindingAdapter("app:imageUrl")
+@BindingAdapter("imageUrl")
 fun bindImage(imageView: ImageView, imgUrl: String?) {
     imgUrl?.let {
         val uri = imgUrl.toUri().buildUpon().scheme("https").build()

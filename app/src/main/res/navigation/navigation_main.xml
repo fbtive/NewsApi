@@ -9,13 +9,7 @@
         android:id="@+id/headline_fragment_dst"
         android:name="com.example.technews.newsheadlines.HeadlineFragment"
         android:label="fragment_headlines"
-        tools:layout="@layout/fragment_headlines" >
-        <action
-            android:id="@+id/action_headline_fragment_dst_to_articleFragment"
-            app:destination="@id/articleFragment"
-            app:enterAnim="@anim/slide_in_bottom"
-            app:popExitAnim="@anim/slide_out_bottom" />
-    </fragment>
+        tools:layout="@layout/fragment_headlines" />
     <fragment
         android:id="@+id/sources_fragment_dst"
         android:name="com.example.technews.newssources.SourcesFragment"
@@ -27,8 +21,7 @@
         android:label="fragment_bookmark"
         tools:layout="@layout/fragment_bookmark" />
     <fragment
-        android:id="@+id/articleFragment"
-        android:name="com.example.technews.newsarticle.ArticleFragment"
-        android:label="fragment_article"
-        tools:layout="@layout/fragment_article" />
+        android:id="@+id/settingsFragment"
+        android:name="com.example.technews.newssettings.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>

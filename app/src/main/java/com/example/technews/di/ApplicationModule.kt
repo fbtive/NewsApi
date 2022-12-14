@@ -1,11 +1,15 @@
 package com.example.technews.di
 
+import android.content.Context
+import com.example.technews.data.local.ArticlesDao
+import com.example.technews.data.local.NewsDatabase
 import com.example.technews.data.remote.API.NewsApi
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -16,6 +20,14 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class ApplicationModule {
+
+    @Provides
+    @Singleton
+    fun provideDatabase(@ApplicationContext context: Context): NewsDatabase = NewsDatabase.getInstance(context)
+
+    @Provides
+    @Singleton
+    fun provideArticleDao(db: NewsDatabase): ArticlesDao = db.articlesDao
 
     @Provides
     @Singleton

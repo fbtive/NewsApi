@@ -33,9 +33,7 @@ abstract class LocalizationUtil {
 
         fun getLanguage(context: Context): String {
             val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
-//            val saved = preferences.getString(SELECTED_LANGUGAGE, ENGLISH)
-            Log.i("preferences", "langugage: " + preferences.getString(SELECTED_LANGUGAGE, ENGLISH))
-            return preferences.getString(SELECTED_LANGUGAGE, ENGLISH) ?: ENGLISH
+            return preferences.getString(SELECTED_LANGUGAGE, INDONESIA) ?: INDONESIA
         }
 
         private fun updateResources(context: Context, language: String): Context {
