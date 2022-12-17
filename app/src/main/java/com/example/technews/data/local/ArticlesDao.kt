@@ -14,6 +14,9 @@ interface ArticlesDao {
     @Delete
     suspend fun delete(article: ArticleModel)
 
-    @Query("SELECT * FROM table_article where url = :url")
-    fun getAll(url: String): LiveData<List<ArticleModel>>
+    @Query("SELECT * FROM table_article")
+    fun getAll(): LiveData<List<ArticleModel>>
+
+    @Query("DELETE FROM table_article")
+    suspend fun clearAll()
 }

@@ -1,10 +1,12 @@
 package com.example.technews.newsheadlines
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -27,11 +29,12 @@ class HeadlinesAdapter(
     fun AddHeaderAndSubmitList(list: List<Article>?){
         adapterScope.launch {
             val items = when(list) {
-                null -> listOf(HeadlineItem.HeadlineHeader)
+                null -> null
                 else -> listOf(HeadlineItem.HeadlineHeader) + list.map { HeadlineItem.HeadlineArticle(it) }
             }
             withContext(Dispatchers.Main) {
                 submitList(items)
+                notifyDataSetChanged()
             }
         }
     }
@@ -52,7 +55,6 @@ class HeadlinesAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        Log.d("Adapter", "position"+position)
         when(holder) {
             is ArticlesViewHolder -> {
 
@@ -83,8 +85,16 @@ class HeadlinesAdapter(
             binding.article = item
             binding.articleThumbnail.setOnClickListener { clickListener(item.url) }
             binding.articleTitle.setOnClickListener { clickListener(item.url) }
-            binding.btnBookmark.setOnClickListener { saveLocalListener(item) }
+            binding.btnBookmark.setOnClickListener {
+                saveLocalListener(item)
+            }
             binding.btnBrowser.setOnClickListener { callBrowserListener(item.url) }
+
+            val color = if (item.saved) R.color.primaryColor else R.color.primaryTextColor
+            binding.btnBookmark.apply {
+                setColorFilter(ContextCompat.getColor(context, color))
+            }
+
             binding.executePendingBindings()
         }
 
@@ -105,7 +115,7 @@ class HeadlinesAdapter(
         }
 
         override fun areContentsTheSame(oldItem: HeadlineItem, newItem: HeadlineItem): Boolean {
-            return oldItem.url == newItem.url
+            return (oldItem.url == newItem.url)
         }
     }
 

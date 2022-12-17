@@ -2,6 +2,7 @@ package com.example.technews.di
 
 import android.content.Context
 import com.example.technews.data.HeadlinesRepository
+import com.example.technews.data.local.ArticlesDao
 import com.example.technews.data.remote.API.NewsApi
 import dagger.Module
 import dagger.Provides
@@ -19,6 +20,7 @@ class ViewModelModule {
     @ViewModelScoped
     fun provideHeadlinesRepository(
         newsApi: NewsApi,
+        articlesDao: ArticlesDao,
         @ApplicationContext context: Context
-    ) : HeadlinesRepository = HeadlinesRepository(newsApi, context)
+    ) : HeadlinesRepository = HeadlinesRepository(newsApi, articlesDao, context)
 }

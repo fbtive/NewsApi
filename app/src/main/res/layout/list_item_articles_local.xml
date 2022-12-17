@@ -1,0 +1,105 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="article"
+            type="com.example.technews.data.domain.Article" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="6dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/left_guide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="8dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/right_guide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="9dp" />
+
+            <ImageView
+                android:id="@+id/article_thumbnail"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:cropToPadding="false"
+                android:scaleType="fitXY"
+                app:imageUrl="@{article.imageUrl}"
+                app:layout_constraintDimensionRatio="h, 4:3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <TextView
+                android:id="@+id/article_title"
+                style="@style/TextAppearance.GoodNews.TitleNews"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{article.title}"
+                app:layout_constraintEnd_toEndOf="@id/right_guide"
+                app:layout_constraintStart_toStartOf="@id/left_guide"
+                app:layout_constraintTop_toBottomOf="@id/article_thumbnail"
+                tools:text="@tools:sample/lorem" />
+
+            <TextView
+                android:id="@+id/article_description"
+                style="@style/TextAppearance.GoodNews.DescriptionNews"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:maxLines="3"
+                android:text="@{article.shortDescription}"
+                app:layout_constraintEnd_toEndOf="@id/right_guide"
+                app:layout_constraintStart_toStartOf="@id/left_guide"
+                app:layout_constraintTop_toBottomOf="@id/article_title"
+                tools:text="@tools:sample/lorem" />
+
+            <Button
+                android:id="@+id/btn_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_delete"
+                android:textAllCaps="false"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                app:layout_constraintStart_toStartOf="@id/left_guide"
+                app:layout_constraintTop_toBottomOf="@id/article_description"
+                />
+
+            <ImageView
+                android:id="@+id/btn_browser"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_open_in_browser"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/right_guide"
+                app:layout_constraintTop_toBottomOf="@id/article_description"
+                app:tint="@color/material_grey_600" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

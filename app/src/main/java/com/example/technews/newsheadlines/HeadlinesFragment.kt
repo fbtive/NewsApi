@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -17,8 +18,11 @@ import com.example.technews.R
 import com.example.technews.data.domain.Article
 import com.example.technews.databinding.FragmentHeadlinesBinding
 import com.example.technews.newsactivity.ArticleActivity
+import com.example.technews.newsactivity.MainViewModel
+import com.example.technews.utils.EventObserver
 import com.google.android.material.appbar.AppBarLayout
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 
 @AndroidEntryPoint
@@ -26,6 +30,7 @@ class HeadlineFragment : Fragment() {
 
     private lateinit var binding: FragmentHeadlinesBinding
     private val  viewModel : HeadlinesViewModel by viewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
 
     private lateinit var articlesAdapter: HeadlinesAdapter
 
@@ -63,6 +68,10 @@ class HeadlineFragment : Fragment() {
     }
 
     private fun setupObserver() {
+        mainViewModel.eventLocaleChanged.observe(viewLifecycleOwner, EventObserver {
+            viewModel.refreshHeadlines()
+        })
+
         viewModel.headlineList.observe(viewLifecycleOwner) {
             articlesAdapter.AddHeaderAndSubmitList(it)
         }
@@ -87,7 +96,5 @@ class HeadlineFragment : Fragment() {
         } catch (e: Exception) {
             Toast.makeText(context, getString(R.string.error_no_browser), Toast.LENGTH_SHORT)
         }
-
     }
-
 }

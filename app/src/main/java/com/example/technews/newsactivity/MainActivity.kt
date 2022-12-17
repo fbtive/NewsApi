@@ -1,23 +1,28 @@
 package com.example.technews.newsactivity
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.example.technews.R
 import com.example.technews.databinding.ActivityMainBinding
+import com.example.technews.utils.LocalizationUtil
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
+    private val viewModel: MainViewModel by viewModels()
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
 
@@ -44,11 +49,14 @@ class MainActivity : AppCompatActivity() {
 //            .setAllCorners(CornerFamily.ROUNDED, 60f)
 //            .build()
 
-
         binding.mainToolbar.setOnMenuItemClickListener { menu ->
             when(menu.itemId) {
                 R.id.menu_settings -> {
-                    navController.navigate(R.id.settingsFragment)
+//                    val navBuilder = NavOptions.Builder()
+//                        .setEnterAnim(R.anim.slide_in_bottom)
+//                        .setPopExitAnim(R.anim.slide_out_bottom)
+                    if(navController.currentDestination?.id != R.id.settingsFragment)
+                        navController.navigate(R.id.settingsFragment)
                     true
                 }
                 else -> false

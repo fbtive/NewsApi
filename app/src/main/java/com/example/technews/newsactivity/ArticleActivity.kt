@@ -19,7 +19,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.technews.R
 import com.example.technews.databinding.ActivityArticleBinding
 
-class ArticleActivity : AppCompatActivity() {
+class ArticleActivity : BaseActivity() {
 
     private lateinit var binding: ActivityArticleBinding
 
