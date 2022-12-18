@@ -7,7 +7,6 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
     app:shimmer_auto_start="true"
     app:shimmer_base_color="@color/grey_shimmer"
     app:shimmer_colored="true"

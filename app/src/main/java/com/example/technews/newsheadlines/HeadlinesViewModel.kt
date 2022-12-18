@@ -6,6 +6,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.technews.data.ArticleFilter
 import com.example.technews.data.HeadlinesRepository
 import com.example.technews.data.domain.Article
 import com.example.technews.data.domain.ResultData
@@ -30,9 +31,18 @@ class HeadlinesViewModel @Inject constructor(
     val shimmer: LiveData<Boolean>
         get() = _shimmer
 
+    private  val _isRefreshing = MutableLiveData<Boolean>(false)
+    val isRefreshing : LiveData<Boolean>
+        get() = _isRefreshing
+
+    private val _categoryFilter = MutableLiveData<String>(ArticleFilter.GENERAL.filter)
+    val categoryFilter: LiveData<String>
+        get() = _categoryFilter
+
     private val _remoteHeadlines = MutableLiveData<List<Article>>()
     private var _dbArticles = repository.getLocalArticles()
     val headlineList = MediatorLiveData<List<Article>>()
+
 
     init {
         refreshHeadlines()
@@ -54,7 +64,7 @@ class HeadlinesViewModel @Inject constructor(
         mainJob?.cancel()
 
         mainJob = viewModelScope.launch {
-            val result = repository.getHeadline()
+            val result = repository.getHeadline(_categoryFilter.value)
             if (result is ResultData.Success) {
                 _remoteHeadlines.value = result.data.asDomainModel()
                 _shimmer.value = false
@@ -62,7 +72,19 @@ class HeadlinesViewModel @Inject constructor(
             if (result is ResultData.Error) {
                 Log.d("ViewModel", result.exception.message!!)
             }
+            _isRefreshing.value = false
         }
+    }
+
+    fun changeFilter(filter: String) {
+        _categoryFilter.value = filter
+        _isRefreshing.value = true
+        refreshHeadlines()
+    }
+
+    fun refresh() {
+        _isRefreshing.value = true;
+        refreshHeadlines()
     }
 
     fun saveArticleToDB(article: Article) {

@@ -3,29 +3,59 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.example.technews.newsheadlines.HeadlinesViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".newsheadlines.HeadlineFragment">
+        app:onRefreshListener="@{viewModel::refresh}">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/headline_recycler_view"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/list_item_articles" />
+            tools:context=".newsheadlines.HeadlineFragment">
 
-        <include layout="@layout/shimmer_list_article" android:id="@+id/shimmer_layout" />
+            <HorizontalScrollView
+                android:id="@+id/filter_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_bottom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/category_filter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="16dp" />
+            </HorizontalScrollView>
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/filter_view">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/headline_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="?attr/actionBarSize"
+                    android:clipToPadding="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/list_item_articles" />
+
+                <include
+                    android:id="@+id/shimmer_layout"
+                    layout="@layout/shimmer_list_article" />
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

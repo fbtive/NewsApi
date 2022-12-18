@@ -38,13 +38,14 @@ class HeadlinesRepository constructor(
         LocalizationUtil.INDONESIA to "id"
     )
 
-    suspend fun getHeadline(): ResultData<NewsData> {
+    suspend fun getHeadline(filter: String?): ResultData<NewsData> {
         return withContext(Dispatchers.IO) {
             val language = LocalizationUtil.getLanguage(context)
             var country = countryData.get(language)!!
+            val category = filter ?: ArticleFilter.GENERAL.filter
 
             try {
-                val response = newsApi.getHeadlines("", country)
+                val response = newsApi.getHeadlines(category, country)
 
                 if (response.isSuccessful) {
                     ResultData.Success(response.body()!!)

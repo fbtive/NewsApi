@@ -15,12 +15,14 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.example.technews.R
+import com.example.technews.data.ArticleFilter
 import com.example.technews.data.domain.Article
 import com.example.technews.databinding.FragmentHeadlinesBinding
 import com.example.technews.newsactivity.ArticleActivity
 import com.example.technews.newsactivity.MainViewModel
 import com.example.technews.utils.EventObserver
 import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -33,6 +35,7 @@ class HeadlineFragment : Fragment() {
     private val mainViewModel: MainViewModel by activityViewModels()
 
     private lateinit var articlesAdapter: HeadlinesAdapter
+    private lateinit var categoryChips: List<Chip>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,10 +45,30 @@ class HeadlineFragment : Fragment() {
         binding = FragmentHeadlinesBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
 
+        setupFilterChip()
         setupArticlesRecyclerView()
         setupObserver()
 
         return binding.root
+    }
+
+    private fun setupFilterChip() {
+        val inflater = LayoutInflater.from(binding.categoryFilter.context)
+
+        categoryChips = ArticleFilter.values().asList().map {
+            val chip = inflater.inflate(R.layout.chip_category_filter, binding.categoryFilter, false) as Chip
+            chip.text = it.filter
+            chip.tag = it.filter
+
+            chip.setOnClickListener {
+                viewModel.changeFilter(it.tag.toString())
+            }
+
+            binding.categoryFilter.addView(chip)
+
+            chip
+        }
+
     }
 
     private fun setupArticlesRecyclerView() {
@@ -76,8 +99,16 @@ class HeadlineFragment : Fragment() {
             articlesAdapter.AddHeaderAndSubmitList(it)
         }
 
+        viewModel.isRefreshing.observe(viewLifecycleOwner) { binding.swipeView.isRefreshing = it }
+
         viewModel.shimmer.observe(viewLifecycleOwner) {
            binding.shimmerLayout.visibility = if (it) View.VISIBLE else View.GONE
+        }
+
+        viewModel.categoryFilter.observe(viewLifecycleOwner) { filter ->
+            categoryChips.forEach {
+                it.isChecked = (it.tag.toString() == filter)
+            }
         }
     }
 
