@@ -57,7 +57,15 @@ class HeadlineFragment : Fragment() {
 
         categoryChips = ArticleFilter.values().asList().map {
             val chip = inflater.inflate(R.layout.chip_category_filter, binding.categoryFilter, false) as Chip
-            chip.text = it.filter
+            chip.text = when(it) {
+                ArticleFilter.GENERAL -> getString(R.string.filter_general)
+                ArticleFilter.TECHNOLOGY -> getString(R.string.filter_technology)
+                ArticleFilter.BUSINESS -> getString(R.string.filter_business)
+                ArticleFilter.HEALTH -> getString(R.string.filter_health)
+                ArticleFilter.ENTERTAINMENT -> getString(R.string.filter_entertainment)
+                ArticleFilter.SCIENCE -> getString(R.string.filter_science)
+                ArticleFilter.SPORTS -> getString(R.string.filter_sports)
+            }
             chip.tag = it.filter
 
             chip.setOnClickListener {
@@ -92,7 +100,7 @@ class HeadlineFragment : Fragment() {
 
     private fun setupObserver() {
         mainViewModel.eventLocaleChanged.observe(viewLifecycleOwner, EventObserver {
-            viewModel.refreshHeadlines()
+            viewModel.refresh()
         })
 
         viewModel.headlineList.observe(viewLifecycleOwner) {

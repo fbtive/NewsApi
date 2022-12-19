@@ -2,6 +2,7 @@ package com.example.technews.data.remote.API
 
 import com.example.technews.BuildConfig
 import com.example.technews.data.remote.response.NewsData
+import com.example.technews.data.remote.response.SourcesData
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -20,4 +21,8 @@ interface NewsApi {
         @Query("category") category: String,
         @Query("country") country: String
     ): Response<NewsData>
+
+    @Headers("X-Api-Key: $API_KEY")
+    @GET("sources")
+    suspend fun getSources(@Query("country") country: String): Response<SourcesData>
 }

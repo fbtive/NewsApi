@@ -1,6 +1,5 @@
 package com.example.technews.newsheadlines
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,9 +9,7 @@ import com.example.technews.data.ArticleFilter
 import com.example.technews.data.HeadlinesRepository
 import com.example.technews.data.domain.Article
 import com.example.technews.data.domain.ResultData
-import com.example.technews.data.domain.toDatabaseModel
 import com.example.technews.data.local.ArticleModel
-import com.example.technews.data.local.ArticlesDao
 import com.example.technews.data.remote.response.asDomainModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
@@ -60,7 +57,7 @@ class HeadlinesViewModel @Inject constructor(
         }
     }
 
-    fun refreshHeadlines() {
+    private fun refreshHeadlines() {
         mainJob?.cancel()
 
         mainJob = viewModelScope.launch {
@@ -70,7 +67,7 @@ class HeadlinesViewModel @Inject constructor(
                 _shimmer.value = false
             }
             if (result is ResultData.Error) {
-                Log.d("ViewModel", result.exception.message!!)
+                Timber.d(result.exception.message!!)
             }
             _isRefreshing.value = false
         }
@@ -83,7 +80,7 @@ class HeadlinesViewModel @Inject constructor(
     }
 
     fun refresh() {
-        _isRefreshing.value = true;
+        _isRefreshing.value = true
         refreshHeadlines()
     }
 

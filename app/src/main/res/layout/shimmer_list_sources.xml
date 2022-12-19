@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:shimmer_colored="true"
+    app:shimmer_base_color="@color/grey_shimmer"
+    app:shimmer_highlight_color="@color/shimmer_highlight"
+    app:shimmer_tilt="0">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.TitleSources"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shimmer_rounded_16" />
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.DescriptionNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/shimmer_rounded_16" />
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.DescriptionNews"
+                    android:layout_width="148dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/shimmer_rounded_16" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.TitleSources"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shimmer_rounded_16" />
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.DescriptionNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/shimmer_rounded_16" />
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.DescriptionNews"
+                    android:layout_width="148dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/shimmer_rounded_16" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.TitleSources"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shimmer_rounded_16" />
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.DescriptionNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/shimmer_rounded_16" />
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.DescriptionNews"
+                    android:layout_width="148dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/shimmer_rounded_16" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.TitleSources"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shimmer_rounded_16" />
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.DescriptionNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/shimmer_rounded_16" />
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.DescriptionNews"
+                    android:layout_width="148dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/shimmer_rounded_16" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.TitleSources"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shimmer_rounded_16" />
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.DescriptionNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/shimmer_rounded_16" />
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.DescriptionNews"
+                    android:layout_width="148dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/shimmer_rounded_16" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.TitleSources"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shimmer_rounded_16" />
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.DescriptionNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/shimmer_rounded_16" />
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.DescriptionNews"
+                    android:layout_width="148dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/shimmer_rounded_16" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.TitleSources"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shimmer_rounded_16" />
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.DescriptionNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/shimmer_rounded_16" />
+
+                <TextView
+                    style="@style/TextAppearance.GoodNews.DescriptionNews"
+                    android:layout_width="148dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/shimmer_rounded_16" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</com.facebook.shimmer.ShimmerFrameLayout>

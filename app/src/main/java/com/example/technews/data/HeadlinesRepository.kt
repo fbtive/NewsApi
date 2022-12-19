@@ -1,7 +1,6 @@
 package com.example.technews.data
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.technews.R
 import com.example.technews.data.domain.Article
@@ -18,7 +17,6 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.ResponseBody
-import retrofit2.HttpException
 import timber.log.Timber
 import java.io.IOException
 import javax.inject.Inject

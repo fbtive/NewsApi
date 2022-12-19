@@ -1,6 +1,7 @@
 package com.example.technews.data.domain
 
 import com.example.technews.data.remote.response.NewsData
+import okhttp3.ResponseBody
 
 sealed class ResultData<out R>() {
     data class Success<out T>(val data: T): ResultData<T>()

@@ -37,7 +37,6 @@ abstract class LocalizationUtil {
         }
 
         private fun updateResources(context: Context, language: String): Context {
-            val language = getLanguage(context)
 
             val locale: Locale = Locale(language)
             Locale.setDefault(locale)

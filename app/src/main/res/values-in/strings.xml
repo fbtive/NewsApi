@@ -3,11 +3,23 @@
     <string name="app_name">NewsApi</string>
     <string name="screen_article">Berita</string>
     <string name="menu_home">Utama</string>
-    <string name="menu_sources">Judul</string>
+    <string name="menu_sources">Sumber</string>
     <string name="menu_bookmark">Tautan</string>
     <string name="menu_settings">Pengaturan</string>
     <string name="menu_copy">Salin</string>
+
+    <string name="filter_general">umum</string>
+    <string name="filter_technology">teknologi</string>
+    <string name="filter_business">bisnis</string>
+    <string name="filter_entertainment">hiburan</string>
+    <string name="filter_health">kesehatan</string>
+    <string name="filter_science">sains</string>
+    <string name="filter_sports">olahraga</string>
+
+    <string name="empty_source">Tidak ada hasil</string>
+    <string name="empty_bookmark">Tautan anda kosong...</string>
     <string name="search_text">Cari Berita</string>
+
     <string name="language">Bahasa</string>
     <string name="copy_to_clipboard">Disalin di penyimpanan</string>
     <string name="error_no_browser">Tidak ada web browser untuk mengeksekusi berita</string>

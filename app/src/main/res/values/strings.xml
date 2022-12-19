@@ -8,6 +8,16 @@
     <string name="menu_settings">Settings</string>
     <string name="menu_copy">Copy</string>
 
+    <string name="filter_general">general</string>
+    <string name="filter_technology">technology</string>
+    <string name="filter_business">business</string>
+    <string name="filter_entertainment">entertainment</string>
+    <string name="filter_health">health</string>
+    <string name="filter_science">science</string>
+    <string name="filter_sports">sports</string>
+    <string name="empty_source">Source is Empty...</string>
+    <string name="empty_bookmark">Bookmark is Empty...</string>
+
     <string name="search_text">Search News</string>
 
     <string name="language">Language</string>

@@ -62,6 +62,7 @@ class BookmarkFragment : Fragment() {
     private fun setupObserver() {
         viewModel.articles.observe(viewLifecycleOwner) {
             adapter.submitList(it)
+            binding.emptyView.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
         }
     }
 
