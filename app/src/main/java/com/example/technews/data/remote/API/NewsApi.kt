@@ -25,4 +25,10 @@ interface NewsApi {
     @Headers("X-Api-Key: $API_KEY")
     @GET("sources")
     suspend fun getSources(@Query("country") country: String): Response<SourcesData>
+
+    @Headers("X-Api-Key: $API_KEY")
+    @GET("everything")
+    suspend fun searchArticles(
+        @Query("q") query: String,
+        @Query("language") language:String): Response<NewsData>
 }

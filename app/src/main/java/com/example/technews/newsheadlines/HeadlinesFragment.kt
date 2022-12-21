@@ -23,6 +23,7 @@ import com.example.technews.newsactivity.MainViewModel
 import com.example.technews.utils.EventObserver
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.chip.Chip
+import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -36,6 +37,12 @@ class HeadlineFragment : Fragment() {
 
     private lateinit var articlesAdapter: HeadlinesAdapter
     private lateinit var categoryChips: List<Chip>
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enterTransition = MaterialFadeThrough()
+        exitTransition = MaterialFadeThrough()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -110,7 +117,7 @@ class HeadlineFragment : Fragment() {
         viewModel.isRefreshing.observe(viewLifecycleOwner) { binding.swipeView.isRefreshing = it }
 
         viewModel.shimmer.observe(viewLifecycleOwner) {
-           binding.shimmerLayout.visibility = if (it) View.VISIBLE else View.GONE
+           binding.shimmerLayout.root.visibility = if (it) View.VISIBLE else View.GONE
         }
 
         viewModel.categoryFilter.observe(viewLifecycleOwner) { filter ->

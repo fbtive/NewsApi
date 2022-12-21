@@ -18,6 +18,9 @@ data class Article(
     var saved: Boolean = false
 ): Parcelable {
 
+    val shortTitle: String
+        get() = title.substring(0, Math.min(100, title.length)) + ".."
+
     val shortDescription: String?
         get() = description?.let {
             it.substring(0, Math.min(200, description.length)) + ".."

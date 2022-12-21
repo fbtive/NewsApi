@@ -56,7 +56,7 @@ class SourcesFragment : Fragment() {
 
     private fun setupObserver() {
         viewModel.shimmer.observe(viewLifecycleOwner) {
-            binding.shimmerLayout.visibility = if(it) View.VISIBLE else View.GONE
+            binding.shimmerLayout.root.visibility = if(it) View.VISIBLE else View.GONE
         }
 
         viewModel.isRefreshing.observe(viewLifecycleOwner) {

@@ -2,6 +2,7 @@ package com.example.technews.di
 
 import android.content.Context
 import com.example.technews.data.HeadlinesRepository
+import com.example.technews.data.SearchRepository
 import com.example.technews.data.SourcesRepository
 import com.example.technews.data.local.ArticlesDao
 import com.example.technews.data.remote.API.NewsApi
@@ -31,4 +32,11 @@ class ViewModelModule {
         newsApi: NewsApi,
         @ApplicationContext context: Context
     ): SourcesRepository = SourcesRepository(newsApi, context)
+
+    @Provides
+    @ViewModelScoped
+    fun provideSearchRepository(
+        newsApi: NewsApi,
+        @ApplicationContext context: Context
+    ): SearchRepository = SearchRepository(newsApi, context)
 }

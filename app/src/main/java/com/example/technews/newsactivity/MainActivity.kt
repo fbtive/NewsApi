@@ -1,9 +1,13 @@
 package com.example.technews.newsactivity
 
+import android.annotation.SuppressLint
+import android.app.ActivityOptions
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
@@ -16,6 +20,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.technews.R
 import com.example.technews.databinding.ActivityMainBinding
 import com.example.technews.utils.LocalizationUtil
+import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
+import com.google.android.material.transition.platform.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,20 +33,46 @@ class MainActivity : BaseActivity() {
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
+        setExitSharedElementCallback(MaterialContainerTransformSharedElementCallback())
+        window.exitTransition = MaterialElevationScale(false).apply {
+            duration = 400L
+            excludeTarget(R.id.bottom_navigation, true)
+        }
+        window.reenterTransition = MaterialElevationScale(true).apply {
+            duration = 1000L
+            excludeTarget(R.id.bottom_navigation, true)
+        }
+        window.sharedElementsUseOverlay = false
+
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+        setupToolbar()
+        setupSearch()
+        setupBottomNavigation()
+    }
+
+    private fun setupSearch() {
+        binding.searchText.setOnClickListener {
+            val intent = Intent(this, SearchActivity::class.java)
+            val options = ActivityOptions.makeSceneTransitionAnimation(
+                this,
+                binding.appBarLayout,
+                "shared_search_container"
+            )
+
+            startActivity(intent, options.toBundle())
+        }
+    }
+
+    private fun setupToolbar() {
         navController = findNavController(R.id.mainNavHostFragment)
 
         appBarConfiguration = AppBarConfiguration
             .Builder(R.id.headline_fragment_dst, R.id.sources_fragment_dst, R.id.bookmark_fragment_dst)
             .build()
 
-        setupToolbar()
-        setupBottomNavigation()
-    }
-
-    private fun setupToolbar() {
         NavigationUI.setupWithNavController(binding.mainToolbar, navController, appBarConfiguration)
 
 //        val drawable: MaterialShapeDrawable = binding.mainToolbar.background as MaterialShapeDrawable
@@ -52,9 +84,7 @@ class MainActivity : BaseActivity() {
         binding.mainToolbar.setOnMenuItemClickListener { menu ->
             when(menu.itemId) {
                 R.id.menu_settings -> {
-//                    val navBuilder = NavOptions.Builder()
-//                        .setEnterAnim(R.anim.slide_in_bottom)
-//                        .setPopExitAnim(R.anim.slide_out_bottom)
+//                    val navBuilder = NavOptions.Builder().setEnterAnim(R.anim.slide_in_bottom).setPopExitAnim(R.anim.slide_out_bottom)
                     if(navController.currentDestination?.id != R.id.settingsFragment)
                         navController.navigate(R.id.settingsFragment)
                     true
@@ -78,7 +108,7 @@ class MainActivity : BaseActivity() {
                 R.id.bookmark_fragment_dst -> {
                     binding.bottomNavigation.visibility = View.VISIBLE
                 }
-                R.id.settingsFragment -> {
+                else -> {
                     binding.bottomNavigation.visibility = View.GONE
                 }
             }
@@ -88,6 +118,8 @@ class MainActivity : BaseActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
     }
+
+
 //
 //    fun recalculateToolbarAndRootView(view: View, appBarLayout: AppBarLayout) {
 //        WindowCompat.setDecorFitsSystemWindows(window, false)

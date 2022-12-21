@@ -50,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="bottom"
+            android:transitionName="shared_search_container"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.appbar.MaterialToolbar
@@ -65,9 +66,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/input_rounded_border"
-                    android:paddingHorizontal="16dp"
+                    android:text="@string/search_text"
+                    android:textColor="?attr/colorOnPrimary"
                     android:paddingVertical="4dp"
-                    android:text="@string/search_text" />
+                    android:paddingHorizontal="16dp" />
+
             </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>
 

@@ -48,6 +48,7 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="?attr/actionBarSize"
                     android:clipToPadding="false"
+                    android:transitionGroup="true"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/list_item_articles" />
 

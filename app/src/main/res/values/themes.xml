@@ -19,7 +19,10 @@
 
 <!--        <item name="snackbarStyle">@style/Widget.MaterialComponents.Snackbar.FullWidth</item>-->
     </style>
-    
+    <style name="Theme.GoodNews.Search" parent="Theme.GoodNews">
+        <item name="android:statusBarColor">@color/primaryColor</item>
+    </style>
+
     <style name="TextAppearance.GoodNews.TitleNews" parent="">
         <item name="android:textAlignment">viewStart</item>
         <item name="android:textStyle">bold</item>
@@ -37,4 +40,19 @@
         <item name="android:textAlignment">viewStart</item>
         <item name="android:textColor">?colorOnPrimary</item>
     </style>
+    <style name="TextAppearance.GoodNews.ArticleTitleRegular" parent="">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle1</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:textColor">?colorOnPrimary</item>
+    </style>
+    <style name="Theme.GoodNews.RoundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+    <style name="Theme.GoodNews.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.GoodNews.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.GoodNews.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
