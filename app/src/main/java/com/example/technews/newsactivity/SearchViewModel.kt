@@ -10,6 +10,7 @@ import com.example.technews.data.domain.ResultData
 import com.example.technews.data.remote.response.asDomainModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
@@ -31,6 +32,7 @@ class SearchViewModel @Inject constructor(val repository: SearchRepository): Vie
         job?.cancel()
 
         job = viewModelScope.launch {
+            delay(400)
             _isRefreshing.value = true
             val result = repository.searchArticles(query)
             if(result is ResultData.Success) {
@@ -39,7 +41,8 @@ class SearchViewModel @Inject constructor(val repository: SearchRepository): Vie
             if(result is ResultData.Error) {
                 Timber.d("Error Search, ${result.exception.message}")
             }
+            _isRefreshing.value = false
         }
-        _isRefreshing.value = false
+
     }
 }

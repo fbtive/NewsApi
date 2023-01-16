@@ -53,21 +53,19 @@ class SearchActivity : AppCompatActivity() {
 
         binding.searchField.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                query?.let { viewModel.searchArticle(it) }
+                query?.let { if(query.isNotEmpty()) viewModel.searchArticle(it) }
                 return true
             }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                newText?.let {
-                    viewModel.searchArticle(it)
-                }
+            override fun onQueryTextChange(query: String?): Boolean {
+                query?.let { if(query.isNotEmpty()) viewModel.searchArticle(it) }
                 return true
             }
         })
     }
 
     private fun setupSearchRecycler() {
-        adapter = SearchAdapter { callBrowser(it) }
+        adapter = SearchAdapter { navigateToWebview(it) }
         binding.articlesRecycler.adapter = adapter
 
         binding.swipeView.setOnRefreshListener {
@@ -86,6 +84,13 @@ class SearchActivity : AppCompatActivity() {
         viewModel.isRefreshing.observe(this) {
             binding.swipeView.isRefreshing = it
         }
+    }
+
+    private fun navigateToWebview(url: String) {
+        val intent = Intent(this, ArticleActivity::class.java)
+        intent.putExtra(Intent.EXTRA_TEXT, url)
+
+        startActivity(intent)
     }
 
     private fun callBrowser(url: String) {
